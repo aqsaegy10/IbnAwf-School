@@ -10,7 +10,7 @@
       --green:   #2d7a3a;
       --green-light: #4aab58;
       --gold:    #c8992a;
-      --gold-light: #f0c755;bottom-cards
+      --gold-light: #f0c755;
       --dark:    #1a2a1f;
       --cream:   #faf7f0;
       --brown:   #7a5c2a;
@@ -304,6 +304,76 @@
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
+    }
+
+    /* ─── BOTTOM TWO CARDS ─── */
+    .bottom-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 0 28px 16px;
+    }
+
+    .bottom-card {
+      background: linear-gradient(135deg, #5a3a10 0%, #8a6020 100%);
+      color: #fff;
+      border-radius: 10px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-card::before {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 100px; height: 100px;
+      background: rgba(255,255,255,.07);
+      border-radius: 50%;
+    }
+
+    .bottom-card .bc-title {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bottom-card .bc-body {
+      font-size: 12.5px;
+      line-height: 1.75;
+      opacity: .9;
+    }
+
+    .bottom-card .bc-btn {
+      margin-top: 10px;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .bottom-card .bc-qr {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .bc-qr-box {
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,.2);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
     }
 
     /* ─── NOTICE BAR ─── */
@@ -638,7 +708,7 @@
   <div class="motivational">
     <div class="motivational-badge">✨ رسالة الإدارة</div>
     <p>
-      عزيزي الطالب: أيام الاختبارات ليست مَحطَّة قلق، بل هي بوابتك نحو
+      عزيزي الطالب: أيام الاختبارات لا ينبغي أن تكون مَحطَّة قلق، بل هي بوابتك نحو
       <span class="bold-phrase">المستقبل</span> وفرصتُك لتُثبت للجميع، ولنفسك
       أولاً، أنك <span class="bold-phrase">جدير بالتميز وتستحق النجاح</span>.
       نظم وقتك، استجمع قوّتك، وثق بقُدراتك. شدَّ قاربك نحو شاطئ إلى الآمال،
@@ -654,7 +724,7 @@
     <small style="font-weight:400; opacity:.8; margin-right:auto; font-size:12px;">الضغط على الرابط أو مسح الـ QR بكاميرا هاتفك</small>
   </div>
 
-   <!-- CARDS GRID -->
+  <!-- CARDS GRID -->
   <div class="cards-grid">
 
     <!-- Card 1: Academic Schedules -->
@@ -746,76 +816,6 @@
     </div>
 
   </div>
-
-      /* ─── BOTTOM TWO CARDS ─── */
-    .bottom-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 0 28px 16px;
-    }
-
-    .bottom-card {
-      background: linear-gradient(135deg, #5a3a10 0%, #8a6020 100%);
-      color: #fff;
-      border-radius: 10px;
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bottom-card::before {
-      content: '';
-      position: absolute;
-      top: -20px; right: -20px;
-      width: 100px; height: 100px;
-      background: rgba(255,255,255,.07);
-      border-radius: 50%;
-    }
-
-    .bottom-card .bc-title {
-      font-size: 14px;
-      font-weight: 800;
-      margin-bottom: 7px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .bottom-card .bc-body {
-      font-size: 12.5px;
-      line-height: 1.75;
-      opacity: .9;
-    }
-
-    .bottom-card .bc-btn {
-      margin-top: 10px;
-      background: rgba(255,255,255,.2);
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 6px;
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .bottom-card .bc-qr {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .bc-qr-box {
-      width: 42px;
-      height: 42px;
-      background: rgba(255,255,255,.2);
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 19px;
-    }
 
   <!-- NOTICE BAR -->
   <div class="notice-bar">
@@ -950,8 +950,8 @@
   <div class="closing-motivational">
     تذكَّروا دائماً: قلق الاختبار شعورٌ طبيعي، فاجعلوه طاقة دافعة لا عائقاً.
     معلموكم خلفكم، وأسركم تدعمكم،
-    <div class="cm-bold">  توكَّلوا على الله. نحن نثق بكم وننتظر تفوقكم.</div>
-     وفَّقَكم الله وسدَّد خطاكم.
+    <div class="cm-bold">وبالله وبالله غير توكَّل. نحن نثق في إبداعكم وننتظر بزوغ فجر نجاحكم.</div>
+    وﷲ وفَّقَكم الله وسدَّد خطاكم.
   </div>
 
   <!-- FOOTER -->
