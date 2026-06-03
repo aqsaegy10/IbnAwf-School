@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل الإجرائي لفنيي تقنية المعلومات - المدارس الحكومية 2025</title>
+    <style>
+        /* ===== VARIABLES & RESET ===== */
+        :root {
+            --primary: #1a3c6e;
+            --primary-light: #2563a8;
+            --secondary: #c0392b;
+            --accent: #e67e22;
+            --gold: #f39c12;
+            --dark: #1a1a2e;
+            --light: #f4f6fb;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --success: #27ae60;
+            --shadow: 0 8px 32px rgba(26,60,110,0.12);
+            --shadow-hover: 0 16px 48px rgba(26,60,110,0.22);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            direction: rtl;
+            overflow-x: hidden;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--gray-light); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        /* ===== PAGES ===== */
+        .page { display: none; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #1e5fa0 100%);
+            color: var(--white);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo-text h1 {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        .header-badge {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .navbar::-webkit-scrollbar { height: 3px; }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.8);
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            direction: rtl;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            color: var(--white);
+            border-bottom-color: var(--gold);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-btn .nav-icon { font-size: 15px; }
+
+        /* ===== SEARCH BAR (HEADER) ===== */
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-mini {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .search-mini:focus-within {
+            background: rgba(255,255,255,0.2);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(243,156,18,0.2);
+        }
+
+        .search-mini input {
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            font-size: 13px;
+            width: 200px;
+            outline: none;
+            font-family: inherit;
+            direction: rtl;
+        }
+
+        .search-mini input::placeholder { color: rgba(255,255,255,0.6); }
+
+        .search-mini button {
+            background: var(--gold);
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .search-mini button:hover { background: var(--accent); }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #16213e 40%, var(--dark) 100%);
+            color: var(--white);
+            padding: 80px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(243,156,18,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37,99,168,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(243,156,18,0.15);
+            border: 1px solid rgba(243,156,18,0.4);
+            border-radius: 24px;
+            padding: 6px 18px;
+            font-size: 13px;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .hero h2 {
+            font-size: clamp(24px, 4vw, 42px);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero h2 span { color: var(--gold); }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        /* ===== MAIN SEARCH ===== */
+        .main-search-box {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius);
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-search-title {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-field {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-field input {
+            flex: 1;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 15px;
+            color: white;
+            outline: none;
+            font-family: inherit;
+            direction: rtl;
+            transition: var(--transition);
+        }
+
+        .search-field input:focus {
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 0 0 3px rgba(243,156,18,0.2);
+        }
+
+        .search-field input::placeholder { color: rgba(255,255,255,0.5); }
+
+        .search-btn-main {
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            border: none;
+            border-radius: 10px;
+            padding: 14px 24px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .search-btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(243,156,18,0.4);
+        }
+
+        .search-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .search-tag {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 4px 12px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-tag:hover { background: rgba(243,156,18,0.2); border-color: var(--gold); color: var(--gold); }
+
+        /* ===== STATS ===== */
+        .stats-bar {
+            background: var(--white);
+            padding: 24px 32px;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border-bottom: 1px solid var(--gray-light);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px 36px;
+            border-left: 1px solid var(--gray-light);
+        }
+
+        .stat-item:last-child { border-left: none; }
+
+        .stat-num {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== SECTION ===== */
+        .section { padding: 60px 0; }
+        .section-alt { background: var(--white); }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            border-radius: 2px;
+            margin: 14px auto 0;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--gold));
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+
+        .card:hover::before { width: 6px; }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 18px;
+        }
+
+        .card-icon.blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+        .card-icon.red { background: linear-gradient(135deg, #fee2e2, #fecaca); }
+        .card-icon.green { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+        .card-icon.orange { background: linear-gradient(135deg, #fed7aa, #fde68a); }
+        .card-icon.purple { background: linear-gradient(135deg, #e9d5ff, #ddd6fe); }
+        .card-icon.teal { background: linear-gradient(135deg, #ccfbf1, #99f6e4); }
+
+        .card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .card-arrow {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary-light);
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 18px;
+        }
+
+        /* ===== QUICK ACCESS ===== */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .quick-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .quick-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,60,110,0.3); }
+
+        .quick-card .q-icon { font-size: 32px; margin-bottom: 10px; }
+        .quick-card h4 { font-size: 14px; font-weight: 600; }
+
+        /* ===== TABLE ===== */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+
+        thead th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 16px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        tbody tr:nth-child(even) { background: #f8fafc; }
+        tbody tr { transition: var(--transition); }
+        tbody tr:hover { background: #e8f0fe; }
+
+        tbody td {
+            padding: 14px 20px;
+            font-size: 13px;
+            color: var(--dark);
+            border-bottom: 1px solid var(--gray-light);
+            line-height: 1.6;
+        }
+
+        /* ===== SUBPAGE HEADER ===== */
+        .subpage-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 50px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subpage-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .subpage-content { position: relative; z-index: 1; max-width: 900px; }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .breadcrumb span { cursor: pointer; }
+        .breadcrumb span:hover { opacity: 1; color: var(--gold); }
+        .breadcrumb .sep { opacity: 0.5; }
+
+        .subpage-hero h2 {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .subpage-hero p { font-size: 15px; opacity: 0.85; max-width: 600px; }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--primary);
+        }
+
+        .content-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-section h3::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .content-section p { color: var(--gray); line-height: 1.8; margin-bottom: 12px; }
+        .content-section ul { padding-right: 20px; }
+        .content-section li { color: var(--gray); line-height: 1.8; margin-bottom: 8px; }
+
+        /* ===== INFO BOX ===== */
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+            border: 1px solid #bfdbfe;
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            margin: 16px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .info-box .ib-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+        .info-box p { color: #1e40af; font-size: 13px; line-height: 1.7; }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7, #fffbeb);
+            border: 1px solid #fcd34d;
+        }
+
+        .warning-box p { color: #92400e; }
+
+        .danger-box {
+            background: linear-gradient(135deg, #fee2e2, #fff5f5);
+            border: 1px solid #fca5a5;
+        }
+
+        .danger-box p { color: #991b1b; }
+
+        .success-box {
+            background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+            border: 1px solid #86efac;
+        }
+
+        .success-box p { color: #065f46; }
+
+        /* ===== STEP CARDS ===== */
+        .steps-list { list-style: none; padding: 0; }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-text h4 { font-size: 15px; color: var(--primary); margin-bottom: 6px; }
+        .step-text p { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+        /* ===== CONTACT CARDS ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-top: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .contact-card .cc-icon { font-size: 36px; margin-bottom: 14px; }
+        .contact-card h4 { font-size: 15px; color: var(--primary); margin-bottom: 8px; }
+        .contact-card p { font-size: 13px; color: var(--gray); }
+        .contact-card .cc-link { color: var(--primary-light); font-weight: 600; word-break: break-all; }
+
+        /* ===== SYSTEMS TABLE ===== */
+        .sys-card {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: var(--transition);
+        }
+
+        .sys-card:hover { box-shadow: var(--shadow); transform: translateX(-4px); }
+        .sys-icon { font-size: 28px; width: 50px; text-align: center; }
+        .sys-info { flex: 1; }
+        .sys-info h4 { font-size: 15px; color: var(--primary); margin-bottom: 4px; }
+        .sys-info p { font-size: 12px; color: var(--gray); }
+        .sys-link { font-size: 12px; color: var(--primary-light); font-weight: 600; }
+
+        /* ===== SEARCH PAGE ===== */
+        .search-page-hero {
+            background: linear-gradient(135deg, #0f172a, var(--primary));
+            padding: 60px 32px;
+            text-align: center;
+            color: white;
+        }
+
+        .search-page-hero h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+        .search-page-hero p { opacity: 0.8; margin-bottom: 32px; }
+
+        .big-search {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .big-search-inner {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+        }
+
+        .big-search input {
+            flex: 1;
+            border: none;
+            padding: 18px 24px;
+            font-size: 16px;
+            outline: none;
+            color: var(--dark);
+            font-family: inherit;
+            direction: rtl;
+        }
+
+        .big-search button {
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            border: none;
+            padding: 18px 28px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .big-search button:hover { background: linear-gradient(135deg, var(--accent), #d35400); }
+
+        .search-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 6px 16px;
+            color: white;
+            font-size: 13px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* ===== SEARCH RESULTS ===== */
+        .search-results-area {
+            padding: 40px 0;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .results-count {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .results-count strong { color: var(--primary); }
+
+        .result-item {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: var(--transition);
+            border-right: 4px solid transparent;
+        }
+
+        .result-item:hover {
+            box-shadow: var(--shadow);
+            border-right-color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        .result-item h4 { font-size: 16px; color: var(--primary); margin-bottom: 8px; }
+        .result-item p { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+        .result-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .result-tag {
+            background: var(--gray-light);
+            border-radius: 12px;
+            padding: 3px 10px;
+            font-size: 11px;
+            color: var(--gray);
+        }
+
+        .highlight { background: rgba(243,156,18,0.2); color: var(--dark); border-radius: 3px; padding: 1px 3px; }
+
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .no-results .nr-icon { font-size: 64px; margin-bottom: 20px; }
+        .no-results h3 { font-size: 22px; color: var(--primary); margin-bottom: 10px; }
+        .no-results p { color: var(--gray); }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.8);
+            padding: 48px 32px 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 36px;
+        }
+
+        .footer-brand h3 { color: white; font-size: 18px; margin-bottom: 12px; }
+        .footer-brand p { font-size: 13px; line-height: 1.7; }
+
+        .footer-col h4 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; cursor: pointer; transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.5;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== FLOATING SEARCH BTN ===== */
+        .float-search {
+            position: fixed;
+            bottom: 32px;
+            left: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 24px;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(26,60,110,0.4);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 999;
+            font-family: inherit;
+        }
+
+        .float-search:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(26,60,110,0.5); }
+
+        /* ===== BACK TO TOP ===== */
+        .back-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(243,156,18,0.4);
+            transition: var(--transition);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-top:hover { transform: translateY(-3px); }
+
+        /* ===== TAGS ===== */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(26,60,110,0.08);
+            color: var(--primary);
+            border-radius: 16px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 3px;
+        }
+
+        .tag.success { background: rgba(39,174,96,0.1); color: var(--success); }
+        .tag.warning { background: rgba(243,156,18,0.1); color: var(--accent); }
+        .tag.danger { background: rgba(192,57,43,0.1); color: var(--secondary); }
+
+        /* ===== POLICY SECTION ===== */
+        .policy-item {
+            display: flex;
+            gap: 14px;
+            padding: 16px;
+            border-bottom: 1px solid var(--gray-light);
+            align-items: flex-start;
+        }
+
+        .policy-item:last-child { border-bottom: none; }
+        .policy-num { width: 28px; height: 28px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+        .policy-text { flex: 1; font-size: 14px; color: var(--dark); line-height: 1.7; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-top { padding: 10px 16px; flex-wrap: wrap; gap: 10px; }
+            .navbar { padding: 0 16px; }
+            .hero { padding: 50px 20px; }
+            .stats-bar { padding: 16px; }
+            .stat-item { padding: 10px 20px; }
+            .container { padding: 0 16px; }
+            .section { padding: 40px 0; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+            .search-mini { display: none; }
+            .subpage-hero { padding: 36px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <div class="header-top">
+        <div class="header-logo" onclick="showPage('home')">
+            <div class="logo-icon">🖥️</div>
+            <div class="logo-text">
+                <h1>الدليل الإجرائي لفنيي تقنية المعلومات</h1>
+                <p>وزارة التربية والتعليم والتعليم العالي | المدارس الحكومية</p>
+            </div>
+        </div>
+        <div class="search-wrapper">
+            <div class="search-mini">
+                <input type="text" id="miniSearch" placeholder="ابحث في الدليل..." onkeyup="handleMiniSearch(event)" />
+                <button onclick="goToSearch()">🔍</button>
+            </div>
+            <div class="header-badge">الإصدار Gs1 | 2024-2025</div>
+        </div>
+    </div>
+    <nav class="navbar">
+        <button class="nav-btn active" onclick="showPage('home'); setActiveNav(this)">
+            <span class="nav-icon">🏠</span> الرئيسية
+        </button>
+        <button class="nav-btn" onclick="showPage('intro'); setActiveNav(this)">
+            <span class="nav-icon">📖</span> المقدمة
+        </button>
+        <button class="nav-btn" onclick="showPage('devices'); setActiveNav(this)">
+            <span class="nav-icon">💻</span> الأجهزة التكنولوجية
+        </button>
+        <button class="nav-btn" onclick="showPage('systems'); setActiveNav(this)">
+            <span class="nav-icon">⚙️</span> الأنظمة الإلكترونية
+        </button>
+        <button class="nav-btn" onclick="showPage('security'); setActiveNav(this)">
+            <span class="nav-icon">🔒</span> الحماية والأمان
+        </button>
+        <button class="nav-btn" onclick="showPage('labs'); setActiveNav(this)">
+            <span class="nav-icon">🏫</span> معامل الحاسوب
+        </button>
+        <button class="nav-btn" onclick="showPage('initiatives'); setActiveNav(this)">
+            <span class="nav-icon">🚀</span> المبادرات
+        </button>
+        <button class="nav-btn" onclick="showPage('contact'); setActiveNav(this)">
+            <span class="nav-icon">📞</span> التواصل
+        </button>
+        <button class="nav-btn" onclick="showPage('search'); setActiveNav(this)">
+            <span class="nav-icon">🔍</span> البحث
+        </button>
+    </nav>
+</header>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: HOME ===== -->
+<!-- ================================================================ -->
+<div class="page active" id="page-home">
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🏫 المدارس الحكومية | دولة قطر</div>
+            <h2>الدليل الإجرائي لمهام العمل<br>لفنيي <span>تقنية المعلومات</span></h2>
+            <p>مرجع شامل ومتكامل لجميع إجراءات ومهام فنيي تقنية المعلومات في المدارس الحكومية للعام الأكاديمي 2024-2025</p>
+            <div class="main-search-box">
+                <div class="main-search-title">🔍 ابحث في الدليل الإجرائي</div>
+                <div class="search-field">
+                    <input type="text" id="heroSearch" placeholder="اكتب ما تبحث عنه... مثال: ضمان الأجهزة، منصة ساعد..." onkeyup="handleHeroSearch(event)" />
+                    <button class="search-btn-main" onclick="goToSearch()">بحث</button>
+                </div>
+                <div class="search-tags">
+                    <span class="search-tag" onclick="quickSearch('الأجهزة التكنولوجية')">الأجهزة</span>
+                    <span class="search-tag" onclick="quickSearch('منصة ساعد')">منصة ساعد</span>
+                    <span class="search-tag" onclick="quickSearch('الضمان')">الضمان</span>
+                    <span class="search-tag" onclick="quickSearch('حماية البيانات')">حماية البيانات</span>
+                    <span class="search-tag" onclick="quickSearch('الكاميرات')">الكاميرات</span>
+                    <span class="search-tag" onclick="quickSearch('معامل الحاسوب')">المعامل</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat-item"><span class="stat-num">18</span><span class="stat-label">صفحة في الدليل</span></div>
+        <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">أقسام رئيسية</span></div>
+        <div class="stat-item"><span class="stat-num">9</span><span class="stat-label">أنظمة إلكترونية</span></div>
+        <div class="stat-item"><span class="stat-num">2025</span><span class="stat-label">العام الأكاديمي</span></div>
+    </div>
+
+    <!-- Main Sections -->
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>أقسام الدليل الإجرائي</h2>
+                <p>اختر القسم الذي تريد الاطلاع عليه للحصول على إجراءات العمل التفصيلية</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="cards-grid">
+                <div class="card" onclick="showPage('devices'); setActiveNav(null, 2)">
+                    <div class="card-icon blue">💻</div>
+                    <h3>الأجهزة التكنولوجية</h3>
+                    <p>إجراءات توريد وتركيب وصيانة الأجهزة، وإدارة الضمان وإسقاط الأجهزة بما يشمل الحواسيب والطابعات والشبكات.</p>
+                    <div class="card-arrow">استعراض التفاصيل ◄</div>
+                </div>
+                <div class="card" onclick="showPage('systems'); setActiveNav(null, 3)">
+                    <div class="card-icon green">⚙️</div>
+                    <h3>الأنظمة الإلكترونية</h3>
+                    <p>إدارة جميع الأنظمة الرقمية في المدرسة من النظام المالي ونظام الطلبة وحتى منصات التعليم المختلفة.</p>
+                    <div class="card-arrow">استعراض التفاصيل ◄</div>
+                </div>
+                <div class="card" onclick="showPage('security'); setActiveNav(null, 4)">
+                    <div class="card-icon red">🔒</div>
+                    <h3>الحماية والأمان</h3>
+                    <p>سياسات حماية الأجهزة والبيانات والحسابات الإلكترونية وسياسة استخدام حساب HD/AD.</p>
+                    <div class="card-arrow">استعراض التفاصيل ◄</div>
+                </div>
+                <div class="card" onclick="showPage('labs'); setActiveNav(null, 5)">
+                    <div class="card-icon orange">🏫</div>
+                    <h3>معامل الحاسوب</h3>
+                    <p>إدارة معامل الحاسوب وبرنامج NetSupport للتحكم بالأجهزة ومشاركة الملفات بين المعلمين والطلاب.</p>
+                    <div class="card-arrow">استعراض التفاصيل ◄</div>
+                </div>
+                <div class="card" onclick="showPage('initiatives'); setActiveNav(null, 6)">
+                    <div class="card-icon purple">🚀</div>
+                    <h3>المبادرات التعليمية</h3>
+                    <p>مبادرة يوم التعلم عن بُعد تحت شعار "كن مستعداً" وإجراءات الاستعداد للطوارئ التعليمية.</p>
+                    <div class="card-arrow">استعراض التفاصيل ◄</div>
+                </div>
+                <div class="card" onclick="showPage('contact'); setActiveNav(null, 7)">
+                    <div class="card-icon teal">📞</div>
+                    <h3>آلية التواصل</h3>
+                    <p>قنوات التواصل مع مكتب الدعم الفني وبيانات الاتصال بالشركات الموردة ومنصة "ساعد".</p>
+                    <div class="card-arrow">استعراض التفاصيل ◄</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Access -->
+    <div class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>وصول سريع</h2>
+                <p>الأكثر بحثاً في الدليل</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="quick-grid">
+                <div class="quick-card" onclick="showPage('devices')">
+                    <div class="q-icon">🖥️</div>
+                    <h4>إجراءات التركيب</h4>
+                </div>
+                <div class="quick-card" onclick="showPage('systems')">
+                    <div class="q-icon">📡</div>
+                    <h4>منصة ساعد</h4>
+                </div>
+                <div class="quick-card" onclick="showPage('devices')">
+                    <div class="q-icon">📹</div>
+                    <h4>كاميرات المراقبة</h4>
+                </div>
+                <div class="quick-card" onclick="showPage('security')">
+                    <div class="q-icon">🔐</div>
+                    <h4>حماية البيانات</h4>
+                </div>
+                <div class="quick-card" onclick="showPage('security')">
+                    <div class="q-icon">👤</div>
+                    <h4>حساب HD/AD</h4>
+                </div>
+                <div class="quick-card" onclick="showPage('labs')">
+                    <div class="q-icon">🖧</div>
+                    <h4>NetSupport</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <h3>تعريف الإجراءات والمهام المتعلقة بتكنولوجيا المعلومات</h3>
+                <p>هي مجموعة متسلسلة من خطوات العمل أو الوظائف التفصيلية المتصلة والدورية، التي يقوم بها فنيّو تقنية المعلومات في المدارس؛ لضمان سهولة سير إجراءات ومهام العمل التي تحدث بصورة دورية سواءً فصلياً أو سنوياً، وتقديم الدعم اللازم أثناء تأديتها.</p>
+                <div class="info-box">
+                    <span class="ib-icon">ℹ️</span>
+                    <p>فنيّو تقنية المعلومات هم المسؤولون عن تقديم خدمات الدعم الفني في المدرسة للمستخدمين (إدارة المدرسة، الطلبة، المدرسين، أولياء الأمور)؛ لضمان جودة خدمات تكنولوجيا المعلومات، واستمرار متابعتها، وضمان الاستخدام الأمثل لها.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>🖥️ الدليل الإجرائي لفنيي تقنية المعلومات</h3>
+                <p>دليل شامل لجميع إجراءات ومهام فنيي تقنية المعلومات في المدارس الحكومية بدولة قطر للعام الأكاديمي 2024-2025. الإصدار Gs1.</p>
+            </div>
+            <div class="footer-col">
+                <h4>الأقسام</h4>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('intro')">المقدمة</a></li>
+                    <li><a onclick="showPage('devices')">الأجهزة التكنولوجية</a></li>
+                    <li><a onclick="showPage('systems')">الأنظمة الإلكترونية</a></li>
+                    <li><a onclick="showPage('security')">الحماية والأمان</a></li>
+                    <li><a onclick="showPage('labs')">معامل الحاسوب</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <ul class="footer-links">
+                    <li><a>📧 it-schools-helpdesk@edu.gov.qa</a></li>
+                    <li><a>📧 fm.helpdesk@edu.gov.qa</a></li>
+                    <li><a>📞 4404 4949</a></li>
+                    <li><a onclick="showPage('contact')">آلية التواصل</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">جميع الحقوق محفوظة © 2024 | وزارة التربية والتعليم والتعليم العالي | دولة قطر</div>
+    </footer>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: INTRO ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-intro">
+    <div class="subpage-hero">
+        <div class="subpage-content">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">🏠 الرئيسية</span>
+                <span class="sep">/</span>
+                <span>المقدمة</span>
+            </div>
+            <h2>📖 المقدمة ودور فنيي تقنية المعلومات</h2>
+            <p>نظرة شاملة على أهمية فنيي تقنية المعلومات ودورهم المحوري في المدارس الحكومية</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <h3>المقدمة</h3>
+                <p>إن التطور الحاصل الآن في بيئات العمل في شتى أنحاء العالم - والذي أساسه البنية التحتية التكنولوجية وشبكات الإنترنت والخدمات الرقمية - يتطلب متخصصين في المجال التقني التكنولوجي؛ لتقديم الدعم الفني اللازم لاستقرار العمل واستمراريته.</p>
+                <p>ونظراً لأن بيئة العمل في المدارس أصبحت تعتمد على التكنولوجيا في مختلف أعمالها؛ استدعت الحاجة لتعيين موظفين من ذوي الكفاءات والخبرة التكنولوجية؛ للقيام بتقديم الدعم الفني لها، ومعالجة التحديات التقنية التي تواجه الهيئة الإدارية والتدريسية فيها.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>دور فنيّي تقنية المعلومات في المدارس</h3>
+                <p>فنّيو تقنية المعلومات هم المسؤولون عن تقديم خدمات الدعم الفني في المدرسة للمستخدمين:</p>
+                <ul>
+                    <li>إدارة المدرسة</li>
+                    <li>الطلبة</li>
+                    <li>المدرسون</li>
+                    <li>أولياء الأمور</li>
+                </ul>
+                <div class="info-box">
+                    <span class="ib-icon">💡</span>
+                    <p>يقوم فنيّو تقنية المعلومات بالتنسيق مع إدارة نُظم المعلومات في وزارة التربية والتعليم والتعليم العالي، والإشراف على صيانة أنظمة وشبكات الحاسوب المحدثة والفعالة؛ لتحسين دور التكنولوجيا في استدامة الأعمال داخل المدرسة.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>بنود الدليل</h3>
+                <p>يشمل الدليل إجراءات العمل التوضيحية لكل معدات البيئة التكنولوجية في المدرسة:</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+                    <span class="tag">💻 الأجهزة التكنولوجية</span>
+                    <span class="tag">⚙️ الأنظمة الإلكترونية</span>
+                    <span class="tag">🔒 المحافظة على الأجهزة وحماية الحسابات</span>
+                    <span class="tag success">🚀 المبادرات التعليمية</span>
+                    <span class="tag warning">📋 بنود عامة</span>
+                    <span class="tag">📝 النماذج المتعلقة بالعمل</span>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>تعريف الإجراءات والمهام المتعلقة بتكنولوجيا المعلومات</h3>
+                <p>هي مجموعة متسلسلة من خطوات العمل أو الوظائف التفصيلية المتصلة والدورية، التي يقوم بها فنيّو تقنية المعلومات في المدارس؛ لضمان سهولة سير إجراءات ومهام العمل التي تحدث بصورة دورية سواءً فصلياً أو سنوياً، وتقديم الدعم اللازم أثناء تأديتها.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: DEVICES ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-devices">
+    <div class="subpage-hero">
+        <div class="subpage-content">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">🏠 الرئيسية</span>
+                <span class="sep">/</span>
+                <span>الأجهزة التكنولوجية</span>
+            </div>
+            <h2>💻 الأجهزة التكنولوجية</h2>
+            <p>إجراءات توريد وتركيب وصيانة الأجهزة التكنولوجية في المدارس الحكومية</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+            <div class="content-section">
+                <h3>نظرة عامة</h3>
+                <p>تمثل الأجهزة التكنولوجية الأساس الذي تعتمد عليه البنية التحتية التكنولوجية في المدارس؛ حيث تسهم بشكل كبير في تعزيز كفاءة العمليات التعليمية والإدارية، وتشمل هذه الأجهزة: الحواسيب، الطابعات، الخوادم، وأجهزة الشبكات.</p>
+                <div class="info-box">
+                    <span class="ib-icon">🔧</span>
+                    <p>يقوم فنيّو تقنية المعلومات بحل مشكلات الأجهزة التكنولوجية؛ بالتنسيق مع الشركات المورِّدة للأجهزة، ومع الجهات المعنية في وزارة التربية والتعليم والتعليم العالي؛ وفقاً لعقود الوزارة.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>الدعم المستمر</h3>
+                <ul class="steps-list">
+                    <li class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-text"><h4>متابعة دورية</h4><p>متابعة أداء الأجهزة بشكل دوري، والتأكد من تحديث البرمجيات والأنظمة المرتبطة بها.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-text"><h4>استجابة فورية</h4><p>الاستجابة الفورية لأي أعطال أو مشكلات تقنية، والعمل على حلها بكفاءة، والتأكد من تسجيل بلاغات على منصة "ساعد" لتوثيق العمل.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-text"><h4>تنسيق خارجي</h4><p>التنسيق مع الجهات المختصة أو المورّدين في حال الحاجة إلى صيانة خارجية أو دعم إضافي.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-text"><h4>تقارير دورية</h4><p>تقديم تقارير دورية عن حالة الأجهزة وتوصيات لتحسين أدائها إذا لزم الأمر.</p></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>إجراءات توريد وتركيب الأجهزة</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الصنف</th>
+                                <th>الإجراءات المطلوبة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>توريد أجهزة حديثة</strong><br><small style="color:#888">(حواسيب، طابعات، أجهزة عرض)</small></td>
+                                <td>
+                                    <strong>قبل التركيب:</strong> تجهيز مواقع التركيب، والتأكد من توافر المتطلبات الفنية. استلام الأجهزة من الشركات والتأكد من تطابقها مع المواصفات.<br><br>
+                                    <strong>أثناء التركيب:</strong> الإشراف على الشركات المورّدة ومتابعتها في تركيب وتشغيل الأجهزة، وضبط الإعدادات الأولية.<br><br>
+                                    <strong>بعد التركيب:</strong> التأكد من عمل الأجهزة بشكل صحيح وتوثيق التفاصيل في نظام الأصول.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>الطابعات وآلات التصوير المركزية</strong></td>
+                                <td>متابعة الشركة المورّدة للتأكد من تثبيت الطابعات في المواقع المخصصة. المتابعة مع الشركات المختصة وتنسيق الصيانة الدورية.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>أجهزة الشبكات</strong><br><small style="color:#888">(Switches, Routers, Firewalls)</small></td>
+                                <td>متابعة تركيب الأجهزة في أماكنها المحددة (غرف الخوادم). فحص الاتصال بالشبكة وضمان التشغيل الصحيح.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الأجهزة السمعية والبصرية</strong><br><small style="color:#888">(أجهزة العرض الثابتة والمتحركة)</small></td>
+                                <td>مراجعة المواصفات الفنية عند الاستلام. تجهيز مواقع التركيب والملحقات. تدريب المستخدمين على استخدام الأجهزة.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الأجهزة التعليمية</strong><br><small style="color:#888">(Raspberry Pi, طابعة 3D)</small></td>
+                                <td>متابعة تركيب الأجهزة مع الشركة المورّدة. متابعة احتياجات الأجهزة والتنسيق لتوفير المستلزمات.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📹 أنظمة المراقبة التلفزيونية (الكاميرات)</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الحالة</th>
+                                <th>الإجراء المطلوب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>تركيب كاميرات جديدة لمدرسة قائمة</td>
+                                <td>إرسال إيميل إلى: <strong>it-schools-helpdesk@edu.gov.qa</strong> يتضمن بيانات الموظف (الاسم، رقم الهاتف الجوال، الإيميل)</td>
+                            </tr>
+                            <tr>
+                                <td>طلب صيانة كاميرات (عطل فني)</td>
+                                <td>إذا كانت تحت الضمان: التواصل مع الشركة المورّدة للكاميرات<br>إذا خرجت من الضمان: إرسال إيميل إلى <strong>fm.helpdesk@edu.gov.qa</strong></td>
+                            </tr>
+                            <tr>
+                                <td>طلب صيانة (كسر أو سوء استخدام)</td>
+                                <td>إذا كانت تحت الضمان: التواصل مع الشركة المورّدة للكاميرات<br>إذا خرجت من الضمان: إرسال إيميل إلى <strong>fm.helpdesk@edu.gov.qa</strong></td>
+                            </tr>
+                            <tr>
+                                <td>طلب صيانة لأجهزة الحاسوب الخاصة بالكاميرات</td>
+                                <td>إذا كانت تحت الضمان: التواصل مع الشركة المورّدة للكاميرات<br>إذا خرجت من الضمان: إرسال إيميل إلى <strong>it-schools-helpdesk@edu.gov.qa</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>🛡️ ضمان الأجهزة</h3>
+                <div class="info-box">
+                    <span class="ib-icon">✅</span>
+                    <p><strong>في حال وجود عيوب في الصنع:</strong> فإن الشركة المورِّدة للأجهزة مطالبة بتعويضهم عنها بأجهزة جديدة.</p>
+                </div>
+                <div class="warning-box info-box">
+                    <span class="ib-icon">⚠️</span>
+                    <p><strong>في حال سوء الاستخدام:</strong> فإن المسؤولية تقع على المستخدم "الموظف"، والمدرسة مطالبة بإصلاح الجهاز أو دفع قيمته. ("شأن داخلي" يُترك لإدارة المدرسة لتحديد المسؤول عن التعويض أو الإصلاح).</p>
+                </div>
+                <div class="danger-box info-box">
+                    <span class="ib-icon">🔴</span>
+                    <p><strong>في حال فقدان الجهاز:</strong> في حال فقدان الجهاز لسبب ما، ووجود الحاجة لرفع العهدة عن الموظف أو المدرسة؛ يتم إخطار إدارة نُظم المعلومات بفقدان الجهاز لاتخاذ الإجراء اللازم.</p>
+                </div>
+                <p style="margin-top:16px">للاستفسارات يمكن التواصل عبر البريد الإلكتروني: <strong style="color:var(--primary)">it-schools-helpdesk@edu.gov.qa</strong></p>
+            </div>
+
+            <div class="content-section">
+                <h3>🗑️ إسقاط الأجهزة</h3>
+                <div class="info-box">
+                    <span class="ib-icon">📋</span>
+                    <p>يُطبَّق على جميع الأجهزة التكنولوجية التي تقوم إدارة نظم المعلومات بتوفيرها للمدارس.</p>
+                </div>
+                <p>يقتصر دور فني تقنية المعلومات في مرحلة إسقاط الأجهزة على التحقق من دقة البيانات في الكشوف الإلكترونية من حيث:</p>
+                <ul>
+                    <li>موديلات وأصناف الأجهزة المطلوب إسقاطها</li>
+                    <li>الأجهزة المملوكة للوزارة</li>
+                    <li>الأجهزة المؤجرة من الشركات (حيث إنها لا تدخل من ضمن الإسقاط)</li>
+                    <li>لا يتم إسقاط أي صنف لا يوجد عليه رقم باركود، وفي حالة وجود جهاز بدون رقم باركود تتم إضافته في نظام العهد والأصول ولصق الباركود عليه، ثم إدخاله في الإسقاط</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>المشكلات المتكررة وآلية التعامل معها</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نوع المشكلة</th>
+                                <th>النطاق/الجهاز</th>
+                                <th>تحويل البلاغ إلى</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>تصعيد المشكلات التي يصعب حلها في المدرسة</td>
+                                <td>الأجهزة التكنولوجية والأنظمة العاملة والمعتمدة في المدارس</td>
+                                <td><span class="tag">Helpdesk</span></td>
+                            </tr>
+                            <tr>
+                                <td>مشكلة فنية بأجهزة الحواسيب</td>
+                                <td>Desktop: Lenovo TC Neo 50s Gen 4<br>Laptop: Lenovo TB 14 Gen 6 IRL</td>
+                                <td><span class="tag success">QCS Support Lenovo</span></td>
+                            </tr>
+                            <tr>
+                                <td>مشكلة فنية بآلات التصوير/الطابعات المركزية</td>
+                                <td>Heavy Duty MFP-HP MFPE87650z H<br>Small MFP-HP MFPE67660z S<br>Desktop Printer-HP E65150dn D</td>
+                                <td><span class="tag warning">Mannai HP Printer Support</span></td>
+                            </tr>
+                            <tr>
+                                <td>مشكلة فنية بأجهزة الحواسيب</td>
+                                <td>Desktop: Dell5060/5070/5080/5090/7010<br>Laptop: Dell5410/5420/5430/5440</td>
+                                <td><span class="tag danger">Mannai Support</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: SYSTEMS ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-systems">
+    <div class="subpage-hero">
+        <div class="subpage-content">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">🏠 الرئيسية</span>
+                <span class="sep">/</span>
+                <span>الأنظمة الإلكترونية</span>
+            </div>
+            <h2>⚙️ الأنظمة الإلكترونية</h2>
+            <p>إدارة جميع الأنظمة الرقمية التي تدير العمليات المختلفة داخل المدرسة</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+            <div class="content-section">
+                <h3>نظرة عامة</h3>
+                <p>تمثل الأنظمة الإلكترونية الوسائل الرقمية التي تدير العمليات المختلفة داخل المدرسة (من أنظمة التشغيل، إلى التطبيقات التعليمية والإدارية)، وتكامل هذه الأنظمة وسلامتها يسهم في تعزيز الكفاءة والفاعلية في إدارة الموارد والأنشطة اليومية.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>الأنظمة الإلكترونية المعتمدة</h3>
+                <div class="sys-card">
+                    <div class="sys-icon">💰</div>
+                    <div class="sys-info">
+                        <h4>النظام المالي</h4>
+                        <p>مرفق دليل ضبط الإعدادات</p>
+                        <div class="sys-link">https://erp.edu.gov.qa/</div>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <div class="sys-icon">👥</div>
+                    <div class="sys-info">
+                        <h4>نظام الموارد البشرية</h4>
+                        <p>مرفق دليل ضبط الإعدادات</p>
+                        <div class="sys-link">https://hr.edu.gov.qa/</div>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <div class="sys-icon">📁</div>
+                    <div class="sys-info">
+                        <h4>نظام الأرشفة الإلكترونية</h4>
+                        <p>مرفق دليل ضبط الإعدادات</p>
+                        <div class="sys-link">https://archive.edu.gov.qa/</div>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <div class="sys-icon">🎓</div>
+                    <div class="sys-info">
+                        <h4>نظام معلومات الطلبة NSIS</h4>
+                        <p>مرفق دليل ضبط الإعدادات للرسائل القصيرة. في حال وجود مشكلات أخرى يتم تحويل البلاغات لقسم الدعم الفني في إدارة نُظم المعلومات.</p>
+                        <div class="sys-link">https://NSIS.edu.gov.qa</div>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <div class="sys-icon">🌐</div>
+                    <div class="sys-info">
+                        <h4>الشبكة الوطنية QNEDS</h4>
+                        <p>يتم تقديم طلب خدمة في منصة "ساعد" لمنح الصلاحيات؛ بعد التأكد من وجود كل المعلومات المطلوبة في الطلب.</p>
+                        <div class="sys-link">https://QNEDS.edu.gov.qa</div>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <div class="sys-icon">📚</div>
+                    <div class="sys-info">
+                        <h4>نظام "مكتبتي"</h4>
+                        <p>التأكد من عمل رابط النظام، وفي حال عدم عمله يتم إنشاء بلاغ في منصة "ساعد".</p>
+                        <div class="sys-link">https://libms.edu.gov.qa/</div>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <div class="sys-icon">🏥</div>
+                    <div class="sys-info">
+                        <h4>برنامج الرعاية الصحية للتمريض في المدارس</h4>
+                        <p>مرفق دليل ضبط الإعدادات</p>
+                        <div class="sys-link">https://access.phcc.gov.qa/my.policy</div>
+                    </div>
+                </div>
+                <div class="sys-card">
+                    <div class="sys-icon">🤝</div>
+                    <div class="sys-info">
+                        <h4>نظام "تواصُل"</h4>
+                        <p>مرفق دليل ضبط الإعدادات</p>
+                        <div class="sys-link">https://tawasol.edu.gov.qa/</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📡 منصة ساعد</h3>
+                <p>منصة مركزية لإدارة البلاغات والخدمات التكنولوجية المطلوبة للمستخدمين في المدارس والوزارة، وجميع ما يخص الأجهزة التكنولوجية والأنظمة العاملة في المدارس.</p>
+                <div class="success-box info-box">
+                    <span class="ib-icon">✅</span>
+                    <p>يتم بشكل دوري تدريب الكادر الوظيفي في المدارس على استخدام المنصة لتقديم طلبات الدعم الفني.</p>
+                </div>
+                <h4 style="margin-top:20px;margin-bottom:12px;color:var(--primary)">آلية حل المشكلات والتحديات</h4>
+                <ul class="steps-list">
+                    <li class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-text"><p>التنسيق وتوزيع مهام العمل بين فنيي تقنية المعلومات في المدرسة حسب المهام المرفقة؛ مع ضرورة التعاون وتبادل الخبرة.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-text"><p>رفع المشكلات وطلبات الخدمة الخاصة بتكنولوجيا المعلومات على منصة "ساعد" من جميع فنيي تقنية المعلومات.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-text"><p>تسجيل جميع البلاغات في منصة "ساعد"؛ حتى تلك التي يتم حلها في المدرسة.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-text"><p>تدريب الموظفين في المدرسة على تقديم البلاغات في منصة "ساعد".</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">5</div>
+                        <div class="step-text">
+                            <p>ضرورة الالتزام عند إرسال أي مشكلة بالتالي:</p>
+                            <ul style="margin-top:8px">
+                                <li>شرح تفصيلي يوضح المشكلة</li>
+                                <li>ذكر الطرق والمحاولات التي تم إجراؤها لحل المشكلة قبل إرسالها</li>
+                                <li>إرفاق صورة للشاشة بالكامل (Screen Print) توضح محتوى المشكلة</li>
+                                <li>التأكد من تحويل البلاغات إلى الجهة الصحيحة</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>📊 التقارير</h3>
+                <p>يمكن استخراج التقارير الخاصة بالعمل من خلال منصة ساعد حسب الجدول المرفق:</p>
+                <div class="table-wrap" style="margin-top:16px">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>التقرير</th>
+                                <th>اسم التقرير في المنصة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>تقرير استخراج جميع البلاغات التي تم إرسالها للشركات من المدرسة</strong><br>
+                                    يشمل:
+                                    <ul style="margin-top:8px">
+                                        <li>كشوف الأجهزة المرسلة للشركة للصيانة</li>
+                                        <li>كشوف بأعداد الطابعات التي تم طلب الصيانة لها</li>
+                                        <li>كشوف بأعداد الأجهزة المستبدلة نتيجة الأعطال أو عيب مصنعي</li>
+                                    </ul>
+                                </td>
+                                <td>School IT Admin Tickets (Mannai and QCS) INC Assignment Log</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: SECURITY ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-security">
+    <div class="subpage-hero">
+        <div class="subpage-content">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">🏠 الرئيسية</span>
+                <span class="sep">/</span>
+                <span>الحماية والأمان</span>
+            </div>
+            <h2>🔒 المحافظة على الأجهزة وحماية الحسابات الإلكترونية</h2>
+            <p>سياسات وإجراءات حماية الأجهزة والبيانات والحسابات الإلكترونية</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+            <div class="content-section">
+                <h3>المحافظة على الأجهزة</h3>
+                <p>تتطلب الأجهزة التكنولوجية صيانة دورية لضمان تشغيلها بأعلى أداء، وحمايتها من الأعطال المفاجئة، كما يجب الحفاظ على أمان البيانات وحمايتها من المخاطر المحتملة.</p>
+                <div class="policy-item">
+                    <div class="policy-num">1</div>
+                    <div class="policy-text"><strong>في حال وجود عيوب في الصنع:</strong> فإن الشركة المورِّدة للأجهزة مطالبة بتعويضهم عنها بأجهزة جديدة.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">2</div>
+                    <div class="policy-text"><strong>في حال فقد الجهاز:</strong> يجب إبلاغ إدارة نُظم المعلومات مباشرةً للتنسيق حول الإجراءات اللازمة.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">3</div>
+                    <div class="policy-text"><strong>في حال سوء الاستخدام:</strong> فإن المسؤولية تقع على المستخدم "الموظف"، وتكون المدرسة هي المسؤولة عن تنفيذ الإجراءات.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">4</div>
+                    <div class="policy-text"><strong>في حال فقد الجهاز والتعويض عنه:</strong> تتم طباعة نفس باركود الجهاز المفقود، ويتم لصقه على الجهاز البديل.</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>🔐 المحافظة على الحسابات الإلكترونية لوزارة التربية والتعليم</h3>
+                <div class="policy-item">
+                    <div class="policy-num">1</div>
+                    <div class="policy-text">عدم استخدام أو تسجيل حساب الوزارة في أي مواقع إلكترونية خارج نطاق العمل؛ مثل (وسائل التواصل الاجتماعي).</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">2</div>
+                    <div class="policy-text">عدم إسناد المهام المتعلقة بنظام الطلبة (NSIS) إلا للموظفين المخوّل لهم بذلك ولديهم الصلاحية المعتمدة.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">3</div>
+                    <div class="policy-text">الحفاظ على الحساب الخاص بالوزارة (اسم المستخدم، كلمة المرور، البريد الإلكتروني)، وعدم مشاركته مع زملاء العمل أو أي شخص آخر.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">4</div>
+                    <div class="policy-text">يتم الدخول على الأنظمة من قِبَل الشخص الذي لديه الصلاحية فقط، وعدم مشاركة حسابات الأنظمة مع زملاء العمل كافة.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">5</div>
+                    <div class="policy-text">عدم كتابة كلمة المرور على الجهاز أو على المكتب أو على أي أوراق خارجية.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">6</div>
+                    <div class="policy-text">عدم إعطاء فنيّ تقنية المعلومات كلمة المرور عند طلب الدعم؛ بل يجب أن يقوم الموظف بإدخالها بنفسه.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">7</div>
+                    <div class="policy-text">عدم وضع كلمات مرور سهلة؛ مثل الأرقام والحروف المسلسلة أو رقم الجوال.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">8</div>
+                    <div class="policy-text">عدم استخدام نفس كلمة المرور لأكثر من حساب.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">9</div>
+                    <div class="policy-text">عدم فتح أي بريد إلكتروني من شخص غير موثوق به أو غير معروف معرفة شخصية.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">10</div>
+                    <div class="policy-text">عدم فتح أي روابط أو مرفقات من مصادر غير معروفة.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">11</div>
+                    <div class="policy-text">عدم مشاركة وثائق العمل أو أي تقارير تخص الوزارة مع أي جهة دون الحصول على موافقة مسبقة.</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>👑 سياسة استخدام حساب HD/AD (Administrator Privilege)</h3>
+                <div class="danger-box info-box" style="margin-bottom:20px">
+                    <span class="ib-icon">⚠️</span>
+                    <p><strong>تنبيه مهم:</strong> هذا الحساب مخصص للأغراض الإدارية المحددة فقط، وأي استخدام خارج هذا النطاق أو تجاوز للصلاحيات الممنوحة، بما في ذلك انتهاك خصوصية المستخدمين، يُعد انتهاكاً للسياسات والقوانين، وقد يعرض صاحبها للمساءلة القانونية.</p>
+                </div>
+
+                <h4 style="margin-bottom:12px;color:var(--primary)">1. استخدام الحساب للأغراض المخصصة فقط:</h4>
+                <ul style="margin-bottom:20px">
+                    <li>حساب HD هو حساب إداري (Administrator) مخصص لإدارة أجهزة المدرسة فقط</li>
+                    <li>يُستخدم لمعالجة المشاكل التقنية التي تتطلب صلاحيات إدارية ولتحميل البرامج المعتمدة فقط</li>
+                    <li>حساب AD هو حساب إداري (Administrator) مخصص لإدارة سيرفرات المدرسة فقط</li>
+                    <li>يُستخدم لمتابعة السيرفرات ومشاركة الملفات والطابعات من خلاله</li>
+                </ul>
+
+                <h4 style="margin-bottom:12px;color:var(--primary)">2. احترام خصوصية الموظفين:</h4>
+                <ul style="margin-bottom:20px">
+                    <li>يُحظَر على فنيّ تقنية المعلومات منح نفسه صلاحيات التصرف بأي ملفات ومجلدات الموظفين على برنامج Teams أو برنامج OneDrive</li>
+                    <li>حظر الاطلاع على البريد الإلكتروني الخاص بالموظفين</li>
+                    <li>منع الاحتفاظ بأي نسخة تخص ملفات المدرسة أو الموظفين</li>
+                </ul>
+
+                <h4 style="margin-bottom:12px;color:var(--primary)">3. أنشطة غير مسموح بها:</h4>
+                <ul style="margin-bottom:20px">
+                    <li>تثبيت برامج غير معتمدة أو غير مرخصة على أجهزة المدرسة</li>
+                    <li>تعديل أو حذف أي ملفات على أجهزة المستخدمين دون موافقة رسمية</li>
+                    <li>إنشاء حسابات إضافية أو تعديل حسابات المستخدمين دون تفويض (Local)</li>
+                    <li>تغيير إعدادات الشبكة أو الأجهزة بهدف الوصول إلى بيانات حساسة</li>
+                    <li>تثبيت برامج مراقبة على الأجهزة أو الشبكة</li>
+                </ul>
+
+                <h4 style="margin-bottom:12px;color:var(--primary)">4. المراقبة والتدقيق:</h4>
+                <ul>
+                    <li>جميع أنشطة حساب HD تخضع للمراجعة والتدقيق لضمان الامتثال للسياسات</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>🛡️ حماية البيانات</h3>
+                <div class="info-box">
+                    <span class="ib-icon">🔐</span>
+                    <p>يتم ذلك من خلال خاصية BitLocker على جميع الأجهزة بالمدارس، والتي تهدف إلى توفير الحماية للبيانات.</p>
+                </div>
+
+                <h4 style="margin:20px 0 12px;color:var(--primary)">نقل البيانات - القواعد والإجراءات:</h4>
+                <div class="policy-item">
+                    <div class="policy-num">1</div>
+                    <div class="policy-text">يجب على جميع الموظفين الاحتفاظ ببياناتهم في برنامج OneDrive أثناء عملهم، وفي حال ترك العمل يجب أن يقوم الموظف بنقل جميع بياناته.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">2</div>
+                    <div class="policy-text">عند إتمام إنهاء خدمات موظف وتعطيل حساباته؛ لا يجب السماح له بالوصول لبياناته المخزنة على أنظمة وخدمات الوزارة إلا في حالات استثنائية.</div>
+                </div>
+                <div class="policy-item">
+                    <div class="policy-num">5</div>
+                    <div class="policy-text">
+                        <strong>في حال طلب الجهة المالكة للبيانات استرجاع بيانات الموظف:</strong>
+                        <ul style="margin-top:8px">
+                            <li>بيانات البريد الإلكتروني: يمكن استرجاعها خلال 30 يوماً من بعد تعطيل الحساب</li>
+                            <li>بيانات OneDrive: يمكن استرجاعها خلال 90 يوماً من بعد تعطيل الحساب</li>
+                            <li>ملفات برنامج Teams: يمكن استرجاعها خلال 90 يوماً من بعد تعطيل الحساب</li>
+                            <li>المحادثات: يمكن استرجاعها بإعادة تفعيل الحساب خلال 30 يوماً</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: LABS ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-labs">
+    <div class="subpage-hero">
+        <div class="subpage-content">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">🏠 الرئيسية</span>
+                <span class="sep">/</span>
+                <span>معامل الحاسوب</span>
+            </div>
+            <h2>🏫 معامل الحاسوب</h2>
+            <p>إدارة معامل الحاسوب وبرنامج NetSupport للتحكم بالأجهزة</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+            <div class="content-section">
+                <h3>مهام فني تقنية المعلومات في المعامل</h3>
+                <ul class="steps-list">
+                    <li class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-text">
+                            <h4>متابعة التركيب والصيانة</h4>
+                            <p>متابعة تركيب الأجهزة مع الشركات المورِّدة، ومتابعة صيانة ما يلزم منها أثناء فترة الضمان مع الشركات ذاتها، أو متابعة استبدال الملحقات الخاصة بالجهاز؛ مثل (Mouse - Cables - Keyboard)، وكل ما يلزم من برامج.</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-text">
+                            <h4>توزيع الأجهزة في نظام العهدة</h4>
+                            <p>يقوم الفني بتوزيع الأجهزة فقط في نظام العهدة على غرف المعامل بخطوات بسيطة جداً؛ لتحديد أرقام الباركود لأجهزة كل معمل؛ مما يسهّل متابعتها للصيانة والضمان مع الشركات المورِّدة.</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-text">
+                            <h4>دور معلم الحاسوب</h4>
+                            <p>معلم الحاسوب هو المسؤول عن متابعة وضع الأجهزة خلال الحصص، ومتابعة الطلاب، وتسجيل أسماء كل مجموعة تستخدم جهازاً واحداً، وعدم ترك المعامل مفتوحة أو بدون رقابة خارج أوقات الحصص.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>🖥️ برنامج التحكم في أجهزة معمل الحاسب - NetSupport</h3>
+                <p>يتميز برنامج NetSupport بخاصية <strong>Collect/File transfer & Send</strong>؛ والتي تعمل كالآتي:</p>
+
+                <div style="display:grid;gap:16px;margin-top:20px">
+                    <div class="info-box">
+                        <span class="ib-icon">📤</span>
+                        <div>
+                            <p><strong>Send/File transfer:</strong> يقوم المعلم بإرسال كافة الملفات المطلوبة إلى أجهزة جميع الطلاب، وتحديد مسار الملفات (مثال Desktop)، ويتم النسخ بسرعة عالية.</p>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <span class="ib-icon">📥</span>
+                        <div>
+                            <p><strong>Collect:</strong> يقوم المعلم بتجميع الملفات الموجودة على أجهزة الطلبة وحفظها على جهازه، ويمكنه عمل Cut للملف بحيث يختفي عن جهاز الطالب، أو نسخ نسخة منه والاحتفاظ بالأصل على جهاز الطالب.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-box info-box" style="margin-top:16px">
+                    <span class="ib-icon">✅</span>
+                    <p>يمكن إرسال وتجميع الملفات بطريقة سهلة وسريعة ومتوفرة لدى جميع المعلمين؛ دون الحاجة للسماح بالطلاب بالدخول على سيرفرات المدرسة، أو تخزين حساب HD على أجهزتهم.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📝 وثيقة العهد في المعامل</h3>
+                <div class="info-box">
+                    <span class="ib-icon">📋</span>
+                    <p>مرفق "وثيقة العهد في المعامل" - يتم تطبيق سياسة العهدة لجميع الأجهزة في معامل الحاسوب لضمان المحاسبة على أي أضرار.</p>
+                </div>
+                <div class="warning-box info-box">
+                    <span class="ib-icon">⚠️</span>
+                    <p>تتم محاسبة الطالب الذي يتسبب بأي ضرر مقصود من إدارة المدرسة، وتغريمه إن لزم الأمر.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: INITIATIVES ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-initiatives">
+    <div class="subpage-hero">
+        <div class="subpage-content">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">🏠 الرئيسية</span>
+                <span class="sep">/</span>
+                <span>المبادرات</span>
+            </div>
+            <h2>🚀 المبادرات التعليمية</h2>
+            <p>مبادرات تقنية المعلومات لدعم العملية التعليمية في المدارس</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+            <div class="content-section">
+                <h3>🏠 يوم التعلم عن بُعد</h3>
+                <div class="info-box">
+                    <span class="ib-icon">🎯</span>
+                    <p>تحت شعار <strong>"كن مستعداً"</strong>، ولضمان استمرار العملية التعليمية وفقاً لما تقتضيه الظروف المختلفة؛ يتم إجراء أيام تجريبية للتعلم "عن بُعد" بشكل دوري خلال العام الأكاديمي؛ وذلك للاستعداد المسبق في حال حدوث أي طارئ يستدعي اللجوء إلى التعلم "عن بُعد" بشكل فعلي.</p>
+                </div>
+
+                <h4 style="margin:20px 0 16px;color:var(--primary)">إجراءات العمل:</h4>
+                <ul class="steps-list">
+                    <li class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-text"><p>تجهيزات الصفوف فيما يتعلق بأجهزة العرض التفاعلي.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-text"><p>التأكد من عمل نقاط الشبكة السلكية داخل الصفوف وتجربتها.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-text"><p>التأكد من وجود كابلات كافية في المدرسة؛ ليتم توصيل أجهزة المعلمين المحمولة بنقاط الشبكة من خلالها.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-text"><p>التأكد من سلامة أجهزة المعلمين المستخدمة في العرض وتجربتها.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">5</div>
+                        <div class="step-text"><p>معالجة المشكلات الفنية بالأجهزة إن وُجدت.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">6</div>
+                        <div class="step-text"><p>الدخول على موقع "منصة طر للتعليم" من الأجهزة، والتأكد من عملها بصورة جيدة.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">7</div>
+                        <div class="step-text"><p>التأكد من إمكانية وصول المدرسين لبرنامج MS Teams من خلال أجهزتهم بدون مشكلات.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">8</div>
+                        <div class="step-text"><p>لتجاوز مشكلة إعادة تعيين كلمة المرور التي تتكرر كل عام؛ يتم التنسيق مع منسقي المشاريع للتحقق من بيانات الدخول.</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">9</div>
+                        <div class="step-text"><p>إلزام الطلاب بالتحقق من بيانات الدخول الخاصة بهم قبل يوم من تطبيق التعلم "عن بُعد".</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">10</div>
+                        <div class="step-text"><p>التعاون مع منسقي المشاريع لإعادة تعيين كلمة المرور الخاصة بحسابات الطلاب خلال يوم التعلم "عن بُعد" فقط.</p></div>
+                    </li>
+                </ul>
+
+                <div class="warning-box info-box">
+                    <span class="ib-icon">💡</span>
+                    <p>يمكن تقسيم هذا البند بين الفنيين في المدرسة، بحيث يكون لكل فنيّ مدة محددة يقدم فيها الدعم للمعلمين؛ بينما يستلم خلالها الفنيّ الآخر مهمة التواصل مع أولياء الأمور لحل مشكلة الحسابات.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📚 بنود عامة</h3>
+                <h4 style="margin-bottom:12px;color:var(--primary)">التدريب ونقل الخبرة</h4>
+                <p>لا بد من العلم أن فنيّ تقنية المعلومات بالمدارس ليس معنياً بتقديم ورش تدريبية للكادر في المدرسة؛ إلا فيما يخص المهام التكنولوجية المسؤول عنها فقط لا غير؛ مثل:</p>
+                <ul style="margin:12px 0">
+                    <li>منصة "ساعد" - مرفق دليل المستخدم</li>
+                    <li>OneDrive - مرفق دليل المستخدم</li>
+                    <li>نشر ثقافة أمن المعلومات</li>
+                    <li>نقل الخبرة التقنية لفنيي تقنية العمل المستجدين في المدرسة حسب نموذج "نقل الخبرات"</li>
+                </ul>
+                <div class="info-box">
+                    <span class="ib-icon">ℹ️</span>
+                    <p>أما بقية الدورات التي يحتاجها الكادر الإداري؛ فيتم التنسيق لها مع مركز التدريب والتطوير وفق خطة المركز.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📋 النماذج المتعلقة بالعمل</h3>
+                <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+                    <div class="card" style="cursor:default">
+                        <div class="card-icon blue">📝</div>
+                        <h3>نموذج نقل الخبرات</h3>
+                        <p>نموذج تفصيلي لنقل الخبرة التقنية بين فنيي تقنية المعلومات.</p>
+                    </div>
+                    <div class="card" style="cursor:default">
+                        <div class="card-icon green">📊</div>
+                        <h3>نموذج تقييم ورشة</h3>
+                        <p>نموذج لتقييم الورش التدريبية المقدمة في المدرسة.</p>
+                    </div>
+                    <div class="card" style="cursor:default">
+                        <div class="card-icon orange">🖥️</div>
+                        <h3>مهام فنيي تقنية المعلومات</h3>
+                        <p>نموذج يحدد مهام فنيي تقنية المعلومات في المدارس الحكومية.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: CONTACT ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-contact">
+    <div class="subpage-hero">
+        <div class="subpage-content">
+            <div class="breadcrumb">
+                <span onclick="showPage('home')">🏠 الرئيسية</span>
+                <span class="sep">/</span>
+                <span>آلية التواصل</span>
+            </div>
+            <h2>📞 آلية التواصل</h2>
+            <p>قنوات التواصل الرسمية للدعم الفني والاستفسارات</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+            <div class="section-header">
+                <h2>قنوات التواصل الرئيسية</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="cc-icon">📡</div>
+                    <h4>منصة "ساعد"</h4>
+                    <p>لبلاغات الأعطال وطلبات الخدمة من أجهزة وغيرها</p>
+                    <div style="margin-top:12px"><span class="tag success">الأولوية الأولى</span></div>
+                </div>
+                <div class="contact-card">
+                    <div class="cc-icon">📧</div>
+                    <h4>مكتب المساعدة الفنية</h4>
+                    <p class="cc-link">it-schools-helpdesk@edu.gov.qa</p>
+                    <p style="margin-top:8px">لبيانات الشركات الموردة والملاحظات والاستفسارات</p>
+                </div>
+                <div class="contact-card">
+                    <div class="cc-icon">📧</div>
+                    <h4>مكتب الدعم الفني للمنشآت</h4>
+                    <p class="cc-link">fm.helpdesk@edu.gov.qa</p>
+                    <p style="margin-top:8px">لطلبات صيانة الكاميرات الخارجة من الضمان</p>
+                </div>
+                <div class="contact-card">
+                    <div class="cc-icon">📞</div>
+                    <h4>رقم الهاتف</h4>
+                    <p style="font-size:22px;font-weight:800;color:var(--primary);margin-top:8px">4404 4949</p>
+                    <p style="margin-top:4px">للتواصل المباشر مع مكتب الدعم الفني</p>
+                </div>
+            </div>
+
+            <div class="content-section" style="margin-top:40px">
+                <h3>جدول التوجيه حسب نوع الطلب</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نوع الطلب</th>
+                                <th>الجهة المختصة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>بلاغات الأعطال وطلبات الخدمة</td>
+                                <td><span class="tag success">منصة "ساعد"</span></td>
+                            </tr>
+                            <tr>
+                                <td>بيانات الشركات الموردة والاستفسارات</td>
+                                <td><span class="tag">it-schools-helpdesk@edu.gov.qa</span></td>
+                            </tr>
+                            <tr>
+                                <td>الملاحظات الخاصة بعمل الشركات الموردة</td>
+                                <td><span class="tag">it-schools-helpdesk@edu.gov.qa</span></td>
+                            </tr>
+                            <tr>
+                                <td>صيانة كاميرات المراقبة (خارج الضمان)</td>
+                                <td><span class="tag warning">fm.helpdesk@edu.gov.qa</span></td>
+                            </tr>
+                            <tr>
+                                <td>طلبات عروض الأسعار</td>
+                                <td><span class="tag">it-schools-helpdesk@edu.gov.qa</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>💡 نصائح للتواصل الفعال</h3>
+                <ul class="steps-list">
+                    <li class="step-item">
+                        <div class="step-num">✓</div>
+                        <div class="step-text"><p>قدم شرحاً تفصيلياً يوضح المشكلة بدقة</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">✓</div>
+                        <div class="step-text"><p>اذكر الطرق والمحاولات التي تم إجراؤها لحل المشكلة قبل إرسالها</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">✓</div>
+                        <div class="step-text"><p>أرفق صورة للشاشة بالكامل (Screen Print) توضح محتوى المشكلة</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">✓</div>
+                        <div class="step-text"><p>تأكد من تحويل البلاغات إلى الجهة الصحيحة حسب الجدول أعلاه</p></div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-num">✓</div>
+                        <div class="step-text"><p>تابع البلاغات واقرأ الاستفسارات المرسلة من فريق الـ Helpdesk والرد عليها</p></div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===== PAGE: SEARCH ===== -->
+<!-- ================================================================ -->
+<div class="page" id="page-search">
+    <div class="search-page-hero">
+        <h2>🔍 البحث في الدليل الإجرائي</h2>
+        <p>ابحث في جميع أقسام الدليل الإجرائي لفنيي تقنية المعلومات</p>
+        <div class="big-search">
+            <div class="big-search-inner">
+                <input type="text" id="mainSearchInput" placeholder="ابحث عن إجراء، جهاز، نظام، سياسة..." oninput="performSearch()" />
+                <button onclick="performSearch()">🔍 بحث</button>
+            </div>
+        </div>
+        <div class="search-filters">
+            <button class="filter-btn active" onclick="setFilter('all', this)">الكل</button>
+            <button class="filter-btn" onclick="setFilter('devices', this)">الأجهزة</button>
+            <button class="filter-btn" onclick="setFilter('systems', this)">الأنظمة</button>
+            <button class="filter-btn" onclick="setFilter('security', this)">الحماية</button>
+            <button class="filter-btn" onclick="setFilter('labs', this)">المعامل</button>
+            <button class="filter-btn" onclick="setFilter('contact', this)">التواصل</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div id="searchResultsArea">
+                <div class="no-results">
+                    <div class="nr-icon">🔍</div>
+                    <h3>ابدأ البحث</h3>
+                    <p>اكتب كلمة أو عبارة للبحث في محتوى الدليل الإجرائي</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FLOATING BUTTONS ===== -->
+<button class="float-search" onclick="showPage('search'); setActiveNav(null, 8)">🔍 بحث سريع</button>
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- ================================================================ -->
+<!-- ===== JAVASCRIPT ===== -->
+<!-- ================================================================ -->
+<script>
+    // ===== DATA =====
+    const searchData = [
+        { title: 'المقدمة ودور فنيي تقنية المعلومات', content: 'فنيّو تقنية المعلومات هم المسؤولون عن تقديم خدمات الدعم الفني في المدرسة للمستخدمين إدارة المدرسة الطلبة المدرسين أولياء الأمور لضمان جودة خدمات تكنولوجيا المعلومات التطور الحاصل في بيئات العمل البنية التحتية التكنولوجية', section: 'intro', tag: 'المقدمة' },
+        { title: 'إجراءات توريد وتركيب الأجهزة التكنولوجية', content: 'توريد أجهزة حديثة أجهزة الحاسوب الطابعات أجهزة العرض قبل التركيب تجهيز مواقع التركيب التأكد من توافر المتطلبات الفنية مصادر الطاقة منافذ الشبكة استلام الأجهزة أثناء التركيب بعد التركيب توثيق التفاصيل نظام الأصول', section: 'devices', tag: 'الأجهزة' },
+        { title: 'الدعم المستمر للأجهزة', content: 'متابعة أداء الأجهزة بشكل دوري تحديث البرمجيات الأنظمة الاستجابة الفورية لأي أعطال مشكلات تقنية تسجيل بلاغات منصة ساعد توثيق العمل التنسيق مع الجهات المختصة الموردين صيانة خارجية دعم إضافي تقارير دورية', section: 'devices', tag: 'الأجهزة' },
+        { title: 'الطابعات وآلات التصوير المركزية', content: 'متابعة الشركة المورّدة تثبيت الطابعات آلات التصوير المواقع المخصصة ضبط الإعدادات الصيانة الدورية الطارئة منصة ساعد احتياجات الطابعات الأوراق الأحبار الدبابيس HP Mannai', section: 'devices', tag: 'الأجهزة' },
+        { title: 'أجهزة الشبكات والبنية التحتية', content: 'Switches Routers Firewalls Access Points الخوادم المركزية الهواتف IP جهاز راوتر Router جهاز المفتاح الرئيسي Core Switch أجهزة المفاتيح الفرعية Access Switches Wireless Access Points جهاز التحكم اللاسلكي Controller UPS SD-WAN فحص الاتصال بالشبكة', section: 'devices', tag: 'الأجهزة' },
+        { title: 'كاميرات المراقبة وأنظمة التلفزيونية', content: 'أنظمة المراقبة التلفزيونية الكاميرات شاشات المراقبة تركيب كاميرات جديدة طلب صيانة كاميرات عطل فني كسر سوء استخدام it-schools-helpdesk@edu.gov.qa fm.helpdesk@edu.gov.qa الضمان', section: 'devices', tag: 'الأجهزة' },
+        { title: 'ضمان الأجهزة وإجراءات التعامل مع العيوب', content: 'ضمان الأجهزة عيوب في الصنع الشركة المورِّدة تعويض أجهزة جديدة سوء الاستخدام المسؤولية الموظف المدرسة إصلاح الجهاز دفع القيمة فقدان الجهاز باركود إدارة نظم المعلومات', section: 'devices', tag: 'الأجهزة' },
+        { title: 'إسقاط الأجهزة ومسح البيانات', content: 'إسقاط الأجهزة التكنولوجية موديلات أصناف الأجهزة المملوكة للوزارة الأجهزة المؤجرة من الشركات رقم باركود نظام العهد والأصول لصق الباركود BitLocker مسح البيانات', section: 'devices', tag: 'الأجهزة' },
+        { title: 'المشكلات المتكررة وآلية التعامل معها', content: 'تصعيد المشكلات Helpdesk QCS Support Lenovo Mannai HP Printer Support Mannai Support Dell Lenovo HP نوع المشكلة تحويل البلاغ مجموعة الدعم', section: 'devices', tag: 'الأجهزة' },
+        { title: 'الأنظمة الإلكترونية المعتمدة', content: 'النظام المالي ERP نظام الموارد البشرية HR نظام الأرشفة الإلكترونية archive نظام معلومات الطلبة NSIS الشبكة الوطنية QNEDS نظام مكتبتي libms برنامج الرعاية الصحية للتمريض نظام تواصل tawasol', section: 'systems', tag: 'الأنظمة' },
+        { title: 'منصة ساعد', content: 'منصة ساعد مركزية إدارة البلاغات الخدمات التكنولوجية المستخدمون المدارس الوزارة الأجهزة التكنولوجية الأنظمة العاملة تدريب الكادر الوظيفي طلبات الدعم الفني', section: 'systems', tag: 'الأنظمة' },
+        { title: 'آلية حل المشكلات والتحديات', content: 'التنسيق توزيع مهام العمل فنيي تقنية المعلومات رفع المشكلات طلبات الخدمة منصة ساعد تسجيل البلاغات تدريب الموظفين شرح تفصيلي صورة للشاشة Screen Print تحويل البلاغات الهيلبديسك', section: 'systems', tag: 'الأنظمة' },
+        { title: 'التقارير واستخراج البيانات', content: 'تقارير العمل منصة ساعد School IT Admin Tickets Mannai QCS INC Assignment Log كشوف الأجهزة المرسلة للشركة الصيانة الطابعات الأجهزة المستبدلة الأعطال عيب مصنعي', section: 'systems', tag: 'الأنظمة' },
+        { title: 'المحافظة على الأجهزة وحماية الحسابات', content: 'صيانة دورية أعلى أداء حماية الأعطال المفاجئة أمان البيانات المخاطر استمرارية العمل إنتاجية المدرسة جودة الخدمات الموارد المالية', section: 'security', tag: 'الحماية' },
+        { title: 'المحافظة على الحسابات الإلكترونية', content: 'حسابات إلكترونية وزارة التربية والتعليم عدم استخدام حساب الوزارة مواقع خارج نطاق العمل وسائل التواصل الاجتماعي NSIS درجات الطلاب الصلاحية المعتمدة كلمة المرور البريد الإلكتروني مشاركة الحساب', section: 'security', tag: 'الحماية' },
+        { title: 'سياسة استخدام حساب HD/AD Administrator Privilege', content: 'حساب HD إداري Administrator أجهزة المدرسة المشاكل التقنية الصلاحيات الإدارية البرامج المعتمدة حساب AD سيرفرات المدرسة خصوصية الموظفين Teams OneDrive البريد الإلكتروني ملفات المدرسة أنشطة غير مسموح بها برامج غير معتمدة تغيير إعدادات الشبكة مراقبة تدقيق', section: 'security', tag: 'الحماية' },
+        { title: 'حماية البيانات وآلية نقلها', content: 'حماية البيانات BitLocker جميع الأجهزة نقل البيانات OneDrive ترك العمل إنهاء الخدمات تعطيل الحسابات استرجاع البيانات البريد الإلكتروني 30 يوم 90 يوم Teams محادثات إعادة تفعيل الحساب', section: 'security', tag: 'الحماية' },
+        { title: 'معامل الحاسوب ومهام فني تقنية المعلومات', content: 'معامل الحاسوب متابعة تركيب الأجهزة الشركات الموردة صيانة الضمان استبدال الملحقات Mouse Cables Keyboard نظام العهدة غرف المعامل أرقام الباركود معلم الحاسوب', section: 'labs', tag: 'المعامل' },
+        { title: 'برنامج NetSupport للتحكم في أجهزة المعامل', content: 'NetSupport برنامج التحكم أجهزة معمل الحاسب Collect File transfer Send مشاركة الملفات المعلم الطلاب Desktop Cut نسخة الأصل سيرفرات المدرسة حساب HD', section: 'labs', tag: 'المعامل' },
+        { title: 'وثيقة العهد في المعامل', content: 'وثيقة العهد معامل الحاسوب محاسبة الطالب ضرر مقصود إدارة المدرسة تغريم', section: 'labs', tag: 'المعامل' },
+        { title: 'مبادرة يوم التعلم عن بُعد', content: 'يوم التعلم عن بعد كن مستعداً العملية التعليمية الظروف المختلفة أيام تجريبية العام الأكاديمي الطارئ تجهيزات الصفوف أجهزة العرض التفاعلي نقاط الشبكة السلكية كابلات سلامة أجهزة المعلمين المشكلات الفنية منصة طر للتعليم MS Teams كلمة المرور بيانات الطلاب أولياء الأمور', section: 'initiatives', tag: 'المبادرات' },
+        { title: 'التدريب ونقل الخبرة', content: 'تدريب فنيي تقنية المعلومات ورش تدريبية الكادر مهام تكنولوجية منصة ساعد OneDrive أمن المعلومات نقل الخبرة التقنية مستجدون نموذج نقل الخبرات مركز التدريب والتطوير', section: 'initiatives', tag: 'المبادرات' },
+        { title: 'النماذج المتعلقة بالعمل', content: 'نماذج العمل نموذج نقل الخبرات نموذج تقييم ورشة مهام فني تقنية المعلومات المدارس الحكومية', section: 'initiatives', tag: 'المبادرات' },
+        { title: 'آلية التواصل مع مكتب المساعدة الفنية', content: 'آلية التواصل منصة ساعد بلاغات الأعطال طلبات الخدمة بريد إلكتروني it-schools-helpdesk@edu.gov.qa fm.helpdesk@edu.gov.qa رقم الهاتف 4404 4949 الشركات الموردة ملاحظات استفسارات', section: 'contact', tag: 'التواصل' },
+        { title: 'التواصل مع شركات الدعم الفني', content: 'Mannai HP Printer Support QCS Support Lenovo Helpdesk شركات الدعم الفني توجيه البلاغات الشركة المورّدة Dell Lenovo HP الصيانة', section: 'contact', tag: 'التواصل' },
+        { title: 'إجراءات التواصل في حال العيوب أو الأعطال', content: 'إجراءات التواصل المدرسة الشركات المورّدة الأجهزة أعطال استفسار إدارة نظم المعلومات شكاوى قصور خلاف الشركة it-schools-helpdesk@edu.gov.qa', section: 'contact', tag: 'التواصل' },
+    ];
+
+    let currentFilter = 'all';
+
+    // ===== NAVIGATION =====
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const target = document.getElementById('page-' + pageId);
+        if (target) { target.classList.add('active'); window.scrollTo({top: 0, behavior: 'smooth'}); }
+        if (pageId === 'search') {
+            setTimeout(() => { document.getElementById('mainSearchInput').focus(); }, 300);
+        }
+    }
+
+    function setActiveNav(btn, idx) {
+        document.querySelectorAll('.nav-btn').forEach((b, i) => {
+            b.classList.remove('active');
+            if (idx !== undefined && i === idx) b.classList.add('active');
+        });
+        if (btn) { document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+    }
+
+    // ===== SEARCH =====
+    function goToSearch() {
+        const miniVal = document.getElementById('miniSearch').value;
+        const heroVal = document.getElementById('heroSearch') ? document.getElementById('heroSearch').value : '';
+        const query = miniVal || heroVal;
+        if (query) { document.getElementById('mainSearchInput').value = query; }
+        showPage('search');
+        document.querySelectorAll('.nav-btn').forEach((b, i) => { b.classList.remove('active'); if (i === 8) b.classList.add('active'); });
+        setTimeout(performSearch, 100);
+    }
+
+    function quickSearch(term) {
+        document.getElementById('mainSearchInput').value = term;
+        showPage('search');
+        document.querySelectorAll('.nav-btn').forEach((b, i) => { b.classList.remove('active'); if (i === 8) b.classList.add('active'); });
+        setTimeout(performSearch, 100);
+    }
+
+    function handleMiniSearch(e) {
+        if (e.key === 'Enter') goToSearch();
+    }
+
+    function handleHeroSearch(e) {
+        if (e.key === 'Enter') goToSearch();
+    }
+
+    function setFilter(filter, btn) {
+        currentFilter = filter;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        performSearch();
+    }
+
+    function highlightText(text, query) {
+        if (!query) return text;
+        const words = query.trim().split(/\s+/).filter(w => w.length > 0);
+        let result = text;
+        words.forEach(word => {
+            const re = new RegExp(`(${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            result = result.replace(re, '<span class="highlight">$1</span>');
+        });
+        return result;
+    }
+
+    function performSearch() {
+        const query = document.getElementById('mainSearchInput').value.trim();
+        const area = document.getElementById('searchResultsArea');
+
+        if (!query) {
+            area.innerHTML = `<div class="no-results"><div class="nr-icon">🔍</div><h3>ابدأ البحث</h3><p>اكتب كلمة أو عبارة للبحث في محتوى الدليل الإجرائي</p></div>`;
+            return;
+        }
+
+        const words = query.toLowerCase().split(/\s+/).filter(w => w.length > 0);
+
+        let results = searchData.filter(item => {
+            if (currentFilter !== 'all' && item.section !== currentFilter) return false;
+            const searchText = (item.title + ' ' + item.content).toLowerCase();
+            return words.some(w => searchText.includes(w));
+        });
+
+        // Sort by relevance
+        results.sort((a, b) => {
+            const aScore = words.filter(w => (a.title + ' ' + a.content).toLowerCase().includes(w)).length;
+            const bScore = words.filter(w => (b.title + ' ' + b.content).toLowerCase().includes(w)).length;
+            return bScore - aScore;
+        });
+
+        if (results.length === 0) {
+            area.innerHTML = `<div class="no-results"><div class="nr-icon">😕</div><h3>لا توجد نتائج</h3><p>لم نجد نتائج تطابق "<strong>${query}</strong>"<br>جرّب استخدام كلمات مختلفة أو أقل تفصيلاً</p></div>`;
+            return;
+        }
+
+        const sectionNames = { intro: 'المقدمة', devices: 'الأجهزة التكنولوجية', systems: 'الأنظمة الإلكترونية', security: 'الحماية والأمان', labs: 'معامل الحاسوب', initiatives: 'المبادرات', contact: 'التواصل' };
+
+        area.innerHTML = `
+            <div class="results-header">
+                <div class="results-count">وُجد <strong>${results.length}</strong> نتيجة للبحث عن "<strong>${query}</strong>"</div>
+            </div>
+            ${results.map(r => `
+                <div class="result-item" onclick="showPage('${r.section}')">
+                    <h4>${highlightText(r.title, query)}</h4>
+                    <p>${highlightText(r.content.substring(0, 180) + '...', query)}</p>
+                    <div class="result-meta">
+                        <span class="result-tag">📁 ${sectionNames[r.section] || r.section}</span>
+                        <span class="result-tag">🏷️ ${r.tag}</span>
+                        <span style="font-size:12px;color:var(--primary-light);margin-right:auto">انقر للاطلاع ◄</span>
+                    </div>
+                </div>
+            `).join('')}
+        `;
+    }
+
+    // ===== INIT =====
+    document.getElementById('mainSearchInput').addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') performSearch();
+        else if (this.value.length >= 2 || this.value.length === 0) performSearch();
+    });
+
+    // Show/hide back-to-top
+    window.addEventListener('scroll', function() {
+        document.querySelector('.back-top').style.opacity = window.scrollY > 300 ? '1' : '0';
+    });
+
+    document.querySelector('.back-top').style.opacity = '0';
+    document.querySelector('.back-top').style.transition = 'opacity 0.3s';
+</script>
+
+</body>
+</html>
