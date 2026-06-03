@@ -713,6 +713,23 @@
       transition: background .2s;
     }
     .search-input-wrap button:hover { background: #e0e0e0; }
+    .search-input-wrap .search-btn {
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    .search-input-wrap .search-btn:hover { background: var(--green-light); }
+    .search-input-wrap .clear-btn {
+      background: #f0f0f0;
+      color: #999;
+      font-size: 14px;
+      padding: 10px 12px;
+    }
+    .search-input-wrap .clear-btn:hover { background: #e0e0e0; color: #555; }
     .search-results { margin-top: 10px; }
     .result-item {
       display: flex;
@@ -867,12 +884,13 @@
     <div class="search-card">
       <div class="search-card-header">
         <span class="icon">🔍</span>
-        الاستعلام عن رقم الجلوس واللجنة للطالب
+        الاستعلام عن رقم الجلوس واللجنة
       </div>
       <div class="search-card-body">
         <div class="search-input-wrap">
-          <input type="text" id="studentSearch" placeholder="أدخل الاسم أو الرقم للبحث..." oninput="searchStudent()" autocomplete="off" />
-          <button onclick="clearSearch()">✕</button>
+          <input type="text" id="studentSearch" placeholder="أدخل الاسم أو الرقم كاملاً ثم اضغط بحث..." onkeydown="if(event.key==='Enter') searchStudent()" autocomplete="off" />
+          <button class="search-btn" onclick="searchStudent()">🔍 بحث</button>
+          <button class="clear-btn" onclick="clearSearch()" title="مسح">✕</button>
         </div>
         <div id="searchResults" class="search-results"></div>
       </div>
@@ -901,7 +919,7 @@
     function searchStudent() {
       const q = document.getElementById('studentSearch').value.trim();
       const resultsDiv = document.getElementById('searchResults');
-      if (q.length < 2) { resultsDiv.innerHTML = ''; return; }
+      if (q.length === 0) { resultsDiv.innerHTML = '<div class="no-result">الرجاء إدخال الاسم أو الرقم للبحث</div>'; return; }
       const qn = normalizeAr(q);
       const matches = STUDENTS.filter(s =>
         normalizeAr(s['الاسم']).includes(qn) ||
